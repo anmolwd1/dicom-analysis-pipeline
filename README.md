@@ -4,9 +4,9 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](requirements.txt)
 
-An end-to-end DICOM data-handling pipeline covering the stages a hospital or imaging-centre IT team actually cares about: **ingestion → metadata inventory → data-quality/conformance validation → de-identification (PHI handling) → pixel-data visualization → basic image processing → aggregate analytics → export/reporting.**
+An end-to-end DICOM data-handling pipeline covering the stages a hospital or imaging-centre: **ingestion → metadata inventory → data-quality/conformance validation → de-identification (PHI handling) → pixel-data visualization → basic image processing → aggregate analytics → export/reporting.**
 
-Built as a portfolio piece to demonstrate practical DICOM engineering to a medical imaging centre's IT department.
+Built as a portfolio piece to demonstrate practical DICOM engineering.
 
 > **No real patient data is used anywhere in this project.** The notebook runs entirely on the small, public, synthetic DICOM sample files bundled with the [`pydicom`](https://pydicom.org/) library (CT, MR, US, CR, NM, structured reports, RT objects, etc.), so it executes standalone with no downloads, credentials, or PHI exposure. The same code paths work unmodified against a real PACS export or a DICOMweb (QIDO-RS/WADO-RS) pull — see [Production Considerations](#production-considerations) below.
 
