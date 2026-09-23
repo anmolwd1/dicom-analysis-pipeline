@@ -6,3 +6,8 @@ venv/
 .DS_Store
 dicom_pipeline_demo/
 *.zip
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+output/

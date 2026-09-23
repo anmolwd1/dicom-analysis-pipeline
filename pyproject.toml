@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dicom-pipeline"
+version = "0.1.0"
+description = "DICOM data analysis pipeline: ingestion, QC, de-identification, visualization, analytics."
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Anmol Wadhwa" }]
+requires-python = ">=3.10"
+dependencies = [
+    "pydicom==3.0.2",
+    "pandas==3.0.6",
+    "numpy==2.5.3",
+    "matplotlib==3.11.2",
+    "scikit-image==0.26.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest==8.3.3"]
+
+[project.scripts]
+dicom-pipeline = "dicom_pipeline.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
