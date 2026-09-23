@@ -1,6 +1,6 @@
 # DICOM Data Analysis Pipeline
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/anmolwd1/dicom-pipeline-showcase/blob/main/dicom_pipeline_showcase.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/anmolwd1/dicom-analysis-pipeline/blob/main/dicom_pipeline_showcase.ipynb)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](requirements.txt)
 
@@ -17,8 +17,8 @@ Click **Open in Colab** above and run all cells — no setup required, ~1-2 minu
 To run locally:
 
 ```bash
-git clone https://github.com/anmolwd1/dicom-pipeline-showcase.git
-cd dicom-pipeline-showcase
+git clone https://github.com/anmolwd1/dicom-analysis-pipeline.git
+cd dicom-analysis-pipeline
 pip install -r requirements.txt
 jupyter notebook dicom_pipeline_showcase.ipynb
 ```
