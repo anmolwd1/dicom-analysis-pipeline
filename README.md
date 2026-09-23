@@ -4,11 +4,11 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](requirements.txt)
 
-An end-to-end DICOM data-handling pipeline covering the stages a hospital or imaging-centre IT team actually cares about: **ingestion → metadata inventory → data-quality/conformance validation → de-identification (PHI handling) → pixel-data visualization → basic image processing → aggregate analytics → export/reporting.**
+An end-to-end DICOM data-handling pipeline covering the stages a hospital or imaging-centre: **ingestion → metadata inventory → data-quality/conformance validation → de-identification (PHI handling) → pixel-data visualization → basic image processing → aggregate analytics → export/reporting.**
 
-Built as a portfolio piece to demonstrate practical DICOM engineering to a medical imaging centre's IT department.
+Built as a portfolio piece to demonstrate practical DICOM engineering.
 
-> **No real patient data is used anywhere in this project.** The notebook runs entirely on the small, public, synthetic DICOM sample files bundled with the [`pydicom`](https://pydicom.org/) library (CT, MR, US, CR, NM, structured reports, RT objects, etc.), so it executes standalone with no downloads, credentials, or PHI exposure. The same code paths work unmodified against a real PACS export or a DICOMweb (QIDO-RS/WADO-RS) pull — see [Production Considerations](#production-considerations) below.
+> **No real patient data is used anywhere in this project.** The notebook runs entirely on the small, public, synthetic DICOM sample files bundled with the [`pydicom`](https://pydicom.org/) library (CT, MR, US, CR, NM, structured reports, RT objects, etc.), so it executes standalone with no downloads, credentials, or PHI exposure. The same code paths work unmodified against a real PACS export or a DICOMweb (QIDO-RS/WADO-RS) pull - see [Production Considerations](#production-considerations) below.
 
 This project ships two ways to run the same pipeline logic:
 
@@ -17,7 +17,7 @@ This project ships two ways to run the same pipeline logic:
 
 ## Quick start — notebook
 
-Click **Open in Colab** above and run all cells — no setup required, ~1-2 minutes end-to-end.
+Click **Open in Colab** above and run all cells - no setup required, ~1-2 minutes end-to-end.
 
 To run locally:
 
@@ -113,14 +113,14 @@ The de-identification routine in Section 5 is a **demonstration**, not a certifi
 
 Talking points for how this maps onto a real imaging-centre deployment:
 
-- **Ingestion at scale** — a DICOM C-STORE SCP (`pynetdicom`) or DICOMweb STOW-RS receiver, processed asynchronously via a queue rather than in-process.
-- **PACS/VNA integration** — query via QIDO-RS/C-FIND, retrieve via WADO-RS/C-MOVE; [Orthanc](https://www.orthanc-server.com/) is a good open-source reference PACS to build and test against.
-- **De-identification compliance** — swap in a validated tool, get the tag list reviewed by compliance/legal, and audit-log every de-identification event.
-- **Data quality at scale** — run the QC engine as a pre-commit gate before archiving; route FAIL status to a quarantine queue with alerting instead of dropping files silently.
-- **Storage & security** — encrypt at rest and in transit, apply role-based access control, and keep de-identified research copies separated from the clinical PACS.
-- **Throughput** — parallelize metadata extraction and pixel decoding (multiprocessing, Spark/Dask) once volumes exceed a single machine.
-- **Observability** — feed the aggregate analytics into a persistent dashboard (Grafana/Metabase) rather than regenerating plots ad hoc.
-- **Downstream ML** — the normalized/windowed arrays are the same pre-processing a triage or CAD model would expect as input.
+- **Ingestion at scale** - a DICOM C-STORE SCP (`pynetdicom`) or DICOMweb STOW-RS receiver, processed asynchronously via a queue rather than in-process.
+- **PACS/VNA integration** - query via QIDO-RS/C-FIND, retrieve via WADO-RS/C-MOVE; [Orthanc](https://www.orthanc-server.com/) is a good open-source reference PACS to build and test against.
+- **De-identification compliance** - swap in a validated tool, get the tag list reviewed by compliance/legal, and audit-log every de-identification event.
+- **Data quality at scale** - run the QC engine as a pre-commit gate before archiving; route FAIL status to a quarantine queue with alerting instead of dropping files silently.
+- **Storage & security** - encrypt at rest and in transit, apply role-based access control, and keep de-identified research copies separated from the clinical PACS.
+- **Throughput** - parallelize metadata extraction and pixel decoding (multiprocessing, Spark/Dask) once volumes exceed a single machine.
+- **Observability** - feed the aggregate analytics into a persistent dashboard (Grafana/Metabase) rather than regenerating plots ad hoc.
+- **Downstream ML** - the normalized/windowed arrays are the same pre-processing a triage or CAD model would expect as input.
 
 ## Tech stack
 
